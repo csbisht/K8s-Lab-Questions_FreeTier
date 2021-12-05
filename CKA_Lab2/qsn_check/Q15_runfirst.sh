@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clusterlist=( cluster1 cluster2 cluster3 )
+clusterlist=( cluster1 )
 
 podname="hr-web-app"
 
