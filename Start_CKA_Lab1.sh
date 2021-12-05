@@ -10,11 +10,11 @@ GREEN='\033[01;32m'
 confirm="Please confirm if you done [yes/no]:"
 nextq="Or you can switch to next question [Press Enter / exit]:"
 
-if [ -d "$HOME/K8s-Lab-Questions/kubeconfig" ]; then
-cp $HOME/.kube/cluster*.config $HOME/K8s-Lab-Questions/kubeconfig/
+if [ -d "$HOME/K8s-Lab-Questions_FreeTier/kubeconfig" ]; then
+cp $HOME/.kube/cluster*.config $HOME/K8s-Lab-Questions_FreeTier/kubeconfig/
 else
-mkdir -p $HOME/K8s-Lab-Questions/kubeconfig
-cp $HOME/.kube/cluster*.config $HOME/K8s-Lab-Questions/kubeconfig/
+mkdir -p $HOME/K8s-Lab-Questions_FreeTier/kubeconfig
+cp $HOME/.kube/cluster*.config $HOME/K8s-Lab-Questions_FreeTier/kubeconfig/
 fi
 
 if [ -d "/opt/K8sLab/Lab1" ]; then
@@ -25,13 +25,13 @@ sudo chown -R ubuntu:ubuntu /opt/K8sLab
 fi	
 
 ###make executable to all scripts
-sudo chmod +x "$HOME"/K8s-Lab-Questions/CKA_Lab1/qsn_check/*.sh
+sudo chmod +x "$HOME"/K8s-Lab-Questions_FreeTier/CKA_Lab1/qsn_check/*.sh
 
 qsncheck () {
-clusterconf=`ls "$HOME"/K8s-Lab-Questions/kubeconfig |cut -d'.' -f1`
+clusterconf=`ls "$HOME"/K8s-Lab-Questions_FreeTier/kubeconfig |cut -d'.' -f1`
 for y in `echo ${clusterconf}`
 do
-source "$HOME"/K8s-Lab-Questions/CKA_Lab1/qsn_check/Q"${qsn_no}".sh "${y}"
+source "$HOME"/K8s-Lab-Questions_FreeTier/CKA_Lab1/qsn_check/Q"${qsn_no}".sh "${y}"
 done
 if [ "${out3}" -gt 0 ]; then
 echo -e "\n\n"	
@@ -83,12 +83,12 @@ case "$ANS" in
   esac
 }  
 
-questionlst=( `ls $HOME/K8s-Lab-Questions/CKA_Lab1/questions` )
+questionlst=( `ls $HOME/K8s-Lab-Questions_FreeTier/CKA_Lab1/questions` )
 
 labrun () {
 clear
 echo -e "\n\n\n\n"
-qsnread=`cat $HOME/K8s-Lab-Questions/CKA_Lab1/questions/Q"${qsn_no}".md | fmt`
+qsnread=`cat $HOME/K8s-Lab-Questions_FreeTier/CKA_Lab1/questions/Q"${qsn_no}".md | fmt`
 printf "${BOLD}${CYAN}${qsnread}${NONE}"
 echo -e "\n\n"
 echo -e "${BOLD}${confirm}${NONE}"
@@ -104,9 +104,9 @@ fi
 for i in "${!questionlst[@]}"
 do
 qsn_no=`expr ${i} + 1`	
-if [ -f "${HOME}/K8s-Lab-Questions/CKA_Lab1/qsn_check/Q${qsn_no}_runfirst.sh" ]; then
-chmod +x "${HOME}/K8s-Lab-Questions/CKA_Lab1/qsn_check/Q${qsn_no}_runfirst.sh"
-"${HOME}"/K8s-Lab-Questions/CKA_Lab1/qsn_check/Q"${qsn_no}"_runfirst.sh
+if [ -f "${HOME}/K8s-Lab-Questions_FreeTier/CKA_Lab1/qsn_check/Q${qsn_no}_runfirst.sh" ]; then
+chmod +x "${HOME}/K8s-Lab-Questions_FreeTier/CKA_Lab1/qsn_check/Q${qsn_no}_runfirst.sh"
+"${HOME}"/K8s-Lab-Questions_FreeTier/CKA_Lab1/qsn_check/Q"${qsn_no}"_runfirst.sh
 labrun
 else
 labrun
