@@ -4,12 +4,12 @@ podname="hr-web-app"
 svcname="hr-web-app-svc"
 
 
-checksvc=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get svc "$svcname" 2> /dev/null`
+checksvc=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get svc "$svcname" 2> /dev/null`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-getpodip=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.status.podIP}'`
-matchsvcendpoint=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config describe svc "$svcname" |grep -w "Endpoints" |grep -w "$getpodip":8080`
+getpodip=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.status.podIP}'`
+matchsvcendpoint=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config describe svc "$svcname" |grep -w "Endpoints" |grep -w "$getpodip":8080`
 out1="$?"
 
 if [ "${out1}" -gt 0 ]; then	

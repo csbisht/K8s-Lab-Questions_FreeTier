@@ -5,16 +5,16 @@ deploymentname="apache-webserver"
 svcname="apache-web"
 clstnum=`echo ${1} |cut -d'r' -f2`
 
-checkdeployment=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get deployment "$deploymentname""$clstnum" 2> /dev/null`
+checkdeployment=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get deployment "$deploymentname""$clstnum" 2> /dev/null`
 
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-checksvc=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get svc "$svcname""$clstnum"-svc 2> /dev/null`
+checksvc=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get svc "$svcname""$clstnum"-svc 2> /dev/null`
 out2="$?"
 
 if [ "${out2}" = 0 ]; then	
-getnodeport=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config describe svc "$svcname""$clstnum"-svc |grep -w "NodePort" |grep -w "30007"`
+getnodeport=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config describe svc "$svcname""$clstnum"-svc |grep -w "NodePort" |grep -w "30007"`
 out1="$?"
 
 if [ "${out1}" -gt 0 ]; then

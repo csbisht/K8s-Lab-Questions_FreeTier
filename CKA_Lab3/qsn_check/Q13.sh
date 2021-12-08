@@ -3,15 +3,15 @@
 podname="secret-pod"
 secretname="mysecret"
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" 2> /dev/null`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" 2> /dev/null`
 out3="$?"
 
 if [ ${out3} = 0 ]; then
-checkpodstat=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
+checkpodstat=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
 out1="$?"
 
 if [ ${out1} = 0 ]; then
-checksecret=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.volumes[*].secret.secretName}' |grep -w "$secretname"`
+checksecret=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.volumes[*].secret.secretName}' |grep -w "$secretname"`
 out2="$?"
 
 if [ ${out2} -gt 0 ]; then

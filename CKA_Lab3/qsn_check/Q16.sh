@@ -4,11 +4,11 @@ podname="nginx-label"
 labelname="app=v1"
 clstnum=`echo ${1} |cut -d'r' -f2`
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname""$clstnum" |grep -w "$podname""$clstnum"`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname""$clstnum" |grep -w "$podname""$clstnum"`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-checklabel=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get  pods --show-labels |grep -w "$labelname""$clstnum"`
+checklabel=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get  pods --show-labels |grep -w "$labelname""$clstnum"`
 out1="$?"	
 
 if [ "${out1}" -gt 0 ]; then

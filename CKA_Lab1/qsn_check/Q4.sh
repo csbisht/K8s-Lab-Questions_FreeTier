@@ -3,13 +3,13 @@
 k8s_version="v1.20.0"
 
 
-getnodes=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get nodes |grep -w "${k8s_version}" |awk '{print $1}'`
+getnodes=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get nodes |grep -w "${k8s_version}" |awk '{print $1}'`
 #out3="$?"
 
 if [ ! -z "${getnodes}" ]; then
 for ver in ${getnodes}
 do
-checkclusterversion=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get node ${ver} |grep -w "${k8s_version}" |awk '{print $5}'`
+checkclusterversion=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get node ${ver} |grep -w "${k8s_version}" |awk '{print $5}'`
 if [ "${checkclusterversion}" = "${k8s_version}" ];then
 echo "node ${ver} upgraded to version ${k8s_version}"
 out3="0"

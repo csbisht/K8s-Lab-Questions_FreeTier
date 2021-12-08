@@ -6,7 +6,7 @@ clstnum=`echo ${1} |cut -d'r' -f2`
 
 
 if [ -f "$filepath"/"$filename""$clstnum"_List ]; then
-getInternalIP=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get nodes -o=jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'`
+getInternalIP=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get nodes -o=jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}'`
 
 checkfile=`cat "$filepath"/"$filename""$clstnum"_List |grep -w "$getInternalIP"`
 out3="$?"

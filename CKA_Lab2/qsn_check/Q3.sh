@@ -6,18 +6,18 @@ systime="SYS_TIME"
 netadmin="NET_ADMIN"
 
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" |grep -w "$podname"`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" |grep -w "$podname"`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-check1=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].command}' |grep -w "$sleeptime"`
+check1=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].command}' |grep -w "$sleeptime"`
 out1="$?"
 
 if [ "${out1}" = 0 ]; then
-check2=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].securityContext.capabilities.add}' |grep -w "$systime"`
+check2=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].securityContext.capabilities.add}' |grep -w "$systime"`
 out2="$?"
 if [ "${out2}" = 0 ]; then
-checknetadmin=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].securityContext.capabilities.add}' |grep -w "$netadmin"`
+checknetadmin=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].securityContext.capabilities.add}' |grep -w "$netadmin"`
 out2_3="$?"
 if [ "${out2_3}" -gt 0 ]; then
 echo "capabilities NET_ADMIN not found in pod"

@@ -5,10 +5,10 @@ namespace="finance"
 sleeptime="3500"
 
 
-checkcommand=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -n "$namespace" -o jsonpath='{.spec.containers[*].command}' |grep -w "sleep"`
+checkcommand=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -n "$namespace" -o jsonpath='{.spec.containers[*].command}' |grep -w "sleep"`
 out1="$?"
 
-checkpodstatus=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -n "$namespace" |grep -w Running`
+checkpodstatus=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -n "$namespace" |grep -w Running`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then

@@ -5,15 +5,15 @@ sleeptime="3500"
 contname1="nginx"
 contname2="busybox"
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" |grep -w "$podname"`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" |grep -w "$podname"`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-check1=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].command}' |grep -w "$sleeptime"`
+check1=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].command}' |grep -w "$sleeptime"`
 out1="$?"
 	
 if [ "${out1}" = 0 ]; then
-checkcontname=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].name}' |grep -w "$contname1 $contname2"`
+checkcontname=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" -o jsonpath='{.spec.containers[*].name}' |grep -w "$contname1 $contname2"`
 out2="$?"
 if [ "${out2}" -gt 0 ]; then
 echo "containers name not found in pod"

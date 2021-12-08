@@ -1,6 +1,6 @@
 #!/bin/bash
 
-checknode=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get node "$1"-node0 -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
+checknode=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get node "$1"-node0 -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
 out3="$?"
 
 if [ "${out3}" -gt 0 ]; then

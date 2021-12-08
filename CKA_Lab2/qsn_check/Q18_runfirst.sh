@@ -10,7 +10,7 @@ do
 clstnum=`echo ${i} |cut -d'r' -f2`
 
 ###create namespace
-/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$i".config create ns "$nsname" &> /dev/null
+/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$i".config create ns "$nsname" &> /dev/null
 
 if [ -d "$HOME/pki" ];then
 ###generate private key

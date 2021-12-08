@@ -5,13 +5,13 @@ clstnum=`echo "${1}" |cut -d'r' -f2`
 imagename="jenkins/jenkins:lts"
 namespace="cicd"
 
-checkdeployment=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get deployment "${deploymentname}""${clstnum}" -n "$namespace"`
+checkdeployment=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get deployment "${deploymentname}""${clstnum}" -n "$namespace"`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
-checkreplica=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pods -n "$namespace" |grep "${deploymentname}${clstnum}" |wc -l`
+checkreplica=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pods -n "$namespace" |grep "${deploymentname}${clstnum}" |wc -l`
 if [ "${checkreplica}" = 5 ]; then
-checkimage=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get deployment "${deploymentname}""${clstnum}" -n "$namespace" -o yaml |grep -w "image: ${imagename}"`
+checkimage=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get deployment "${deploymentname}""${clstnum}" -n "$namespace" -o yaml |grep -w "image: ${imagename}"`
 out1="$?"
 
 if [ "${out1}" -gt 0 ]; then

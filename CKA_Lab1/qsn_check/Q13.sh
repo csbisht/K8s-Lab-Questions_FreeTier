@@ -6,7 +6,7 @@ clstnum=`echo ${1} |cut -d'r' -f2`
 
 
 if [ -f "$filepath"/"$filename""$clstnum".txt ]; then
-getosImages=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get nodes -o=jsonpath='{.items[*].status.nodeInfo.osImage}'`
+getosImages=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get nodes -o=jsonpath='{.items[*].status.nodeInfo.osImage}'`
 
 checkfile=`cat "$filepath"/"$filename""$clstnum".txt |grep -w "$getosImages"`
 out3="$?"

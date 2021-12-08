@@ -4,7 +4,7 @@ podname="redispod"
 eventfile="/opt/K8sLab/Lab3/events_redispod-cluster"
 clstnum=`echo ${1} |cut -d'r' -f2`
 
-checkpodstatus=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname" |grep -w Running`
+checkpodstatus=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname" |grep -w Running`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then

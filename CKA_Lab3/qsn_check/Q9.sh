@@ -4,15 +4,15 @@ podname="nginx-mnt"
 clstnum=`echo ${1} |cut -d'r' -f2`
 
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname""$clstnum" 2> /dev/null`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname""$clstnum" 2> /dev/null`
 out3="$?"
 
 if [ ${out3} = 0 ]; then
-checkpodstat=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname""$clstnum" -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
+checkpodstat=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname""$clstnum" -o jsonpath='{.status.conditions[?(@.type == "Ready")].status}' |grep -w "True"`
 out1="$?"
 
 if [ ${out1} = 0 ]; then
-checkpodmnt=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/"$1".config get pod "$podname""$clstnum" -o jsonpath='{.spec.volumes[*].hostPath.path}' |grep -w "/tmp/nginx"`
+checkpodmnt=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/"$1".config get pod "$podname""$clstnum" -o jsonpath='{.spec.volumes[*].hostPath.path}' |grep -w "/tmp/nginx"`
 out2="$?"
 
 if [ ${out2} -gt 0 ]; then

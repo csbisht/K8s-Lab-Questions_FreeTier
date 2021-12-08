@@ -13,10 +13,10 @@ namespace="account"
 clstnum=`echo ${1} |cut -d'r' -f2`
 
 funcheck () {
-checklabel=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/cluster"$clstnum".config get pod "$1" -n "$namespace" --show-labels |grep -w "$2,$labelcommon"`
+checklabel=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/cluster"$clstnum".config get pod "$1" -n "$namespace" --show-labels |grep -w "$2,$labelcommon"`
 out1="$?"
 
-checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions/kubeconfig/cluster"$clstnum".config get pod "$1" -n "$namespace" |grep -w "$1"`
+checkpod=`/usr/bin/kubectl --kubeconfig=$HOME/K8s-Lab-Questions_FreeTier/kubeconfig/cluster"$clstnum".config get pod "$1" -n "$namespace" |grep -w "$1"`
 out3="$?"
 
 if [ "${out3}" = 0 ]; then
